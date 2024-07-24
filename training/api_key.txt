@@ -1,2 +1,0 @@
-# Insert API key below here
-api_key=test
