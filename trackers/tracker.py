@@ -1,5 +1,7 @@
 from ultralytics import YOLO
 import supervision as sv
+import pickle
+import os
 
 
 class Tracker:
@@ -8,6 +10,7 @@ class Tracker:
         self.tracker = sv.ByteTrack()
 
     def detect_frames(self, frames):
+        # Detects the frames in batches (to avoid OOM problems)
         batch_size = 20
         detections = []
         for i in range(0, len(frames), batch_size):
@@ -16,15 +19,25 @@ class Tracker:
             break
         return detections
 
-    def get_object_tracks(self, frames):
+    def get_object_tracks(self, frames, read_from_stub=False, stub_path=None):
+
+        # If existing stub_path exists and we want to read tracks from that file
+        if read_from_stub and stub_path is not None and os.path.exists(stub_path):
+            with open(stub_path, "rb") as f:
+                tracks = pickle.load(f)
+            return tracks
+
+        # Detects the frames normally using YOLO (with certain batch size)
         detections = self.detect_frames(frames)
 
+        # Define tracks dict
         tracks = {
             "players": [],
             "referees": [],
             "ball": [],
         }
 
+        # For loop for running the detection for each frame
         for frame_num, detection in enumerate(detections):
             cls_names = detection.names
             cls_names_inv = {v: k for k, v in cls_names.items()}
@@ -33,7 +46,7 @@ class Tracker:
             # Convert to supervision detection format
             detection_supervision = sv.Detections.from_ultralytics(detection)
 
-            # Convert goalkeeper to player object
+            # Convert goalkeeper to player object (this assumes that we are not taking any specific "goalkeeper" stats)
             for object_ind, class_id in enumerate(detection_supervision.class_id):
                 if cls_names[class_id] == "goalkeeper":
                     detection_supervision.class_id[object_ind] = cls_names_inv["player"]
@@ -43,10 +56,16 @@ class Tracker:
                 detection_supervision
             )
 
+            # Idea:
+            # - Tracks are divided into three categories (players, referees, ball)
+            # - In each category, you can select a specific frame number
+            # - In each frame, a bbox will be saved of that certain track_id in that category
             tracks["players"].append({})
             tracks["referees"].append({})
             tracks["ball"].append({})
 
+            # Saving the bbox data in the tracks variable for players and referees
+            # This is done in a certain frame number for all track_id
             for frame_detection in detection_with_tracks:
                 bbox = frame_detection[0].tolist()
                 cls_id = frame_detection[3]
@@ -57,11 +76,17 @@ class Tracker:
                 if cls_id == cls_names_inv["referee"]:
                     tracks["referees"][frame_num][track_id] = {"bbox": bbox}
 
+            # Saving the bbox data in the tracks variable for ball
             for frame_detection in detection_supervision:
                 bbox = frame_detection[0].tolist()
                 cls_id = frame_detection[3]
 
                 if cls_id == cls_names_inv["ball"]:
                     tracks["ball"][frame_num][1] = {"bbox": bbox}
+
+        # Save tracks in a stub, if path exists
+        if stub_path is not None:
+            with open(stub_path, "wb") as f:
+                pickle.dump(tracks, f)
 
         return tracks
