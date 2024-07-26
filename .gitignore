@@ -1,2 +1,4 @@
 runs/
 training/api_key.txt
+*.pyc
+*.pyo
