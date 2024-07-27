@@ -2,3 +2,4 @@ runs/
 training/api_key.txt
 *.pyc
 *.pyo
+.DS_Store
