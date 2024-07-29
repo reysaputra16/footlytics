@@ -1,6 +1,7 @@
 runs/
 training/api_key.txt
 output_videos/
+stubs/
 *.pyc
 *.pyo
 .DS_Store
