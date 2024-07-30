@@ -10,8 +10,13 @@ class ViewTransformer:
 
         # Pixel vertices to determine the field
         self.pixel_vertices = np.array(
-            [[110, 1035], [265, 275], [910, 260], [1640, 915]]
-        )
+            [
+                [669, 1079],  # Lower left corner
+                [308, 388],  # Upper left corner
+                [797, 368],  # Upper right corner
+                [1684, 972],  # Lower right corner
+            ]
+        )  # NOTE: Predetermined pixel coord for test_video_1.mp4
 
         self.target_vertices = np.array(
             [[0, court_width], [0, 0], [court_length, 0], [court_length, court_width]]
@@ -46,6 +51,6 @@ class ViewTransformer:
                     position_transformed = self.transformed_point(position)
                     if position_transformed is not None:
                         position_transformed = position_transformed.squeeze().tolist()
-                        tracks[object][frame_num][track_id][
-                            "position_transformed"
-                        ] = position_transformed
+                    tracks[object][frame_num][track_id][
+                        "position_transformed"
+                    ] = position_transformed
