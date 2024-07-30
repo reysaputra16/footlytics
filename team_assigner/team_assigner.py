@@ -54,7 +54,7 @@ class TeamAssigner:
             player_colors.append(player_color)
 
         # Use Kmeans to divide the player colors into 2 clusters
-        kmeans = KMeans(n_clusters=2, init="k-means++", n_init=1)
+        kmeans = KMeans(n_clusters=2, init="k-means++", n_init="auto")
         kmeans.fit(player_colors)
 
         self.kmeans = kmeans
