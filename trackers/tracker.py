@@ -70,6 +70,7 @@ class Tracker:
         tracks = {
             "players": [],
             "referees": [],
+            "goalkeepers": [],
             "ball": [],
         }
 
@@ -83,9 +84,9 @@ class Tracker:
             detection_supervision = sv.Detections.from_ultralytics(detection)
 
             # Convert goalkeeper to player object (this assumes that we are not taking any specific "goalkeeper" stats)
-            for object_ind, class_id in enumerate(detection_supervision.class_id):
-                if cls_names[class_id] == "goalkeeper":
-                    detection_supervision.class_id[object_ind] = cls_names_inv["player"]
+            # for object_ind, class_id in enumerate(detection_supervision.class_id):
+            #   if cls_names[class_id] == "goalkeeper":
+            #      detection_supervision.class_id[object_ind] = cls_names_inv["player"]
 
             # Track objects
             detection_with_tracks = self.tracker.update_with_detections(
@@ -98,6 +99,7 @@ class Tracker:
             # - In each frame, a bbox will be saved of that certain track_id in that category
             tracks["players"].append({})
             tracks["referees"].append({})
+            tracks["goalkeepers"].append({})
             tracks["ball"].append({})
 
             # Saving the bbox data in the tracks variable for players and referees
@@ -111,6 +113,8 @@ class Tracker:
                     tracks["players"][frame_num][track_id] = {"bbox": bbox}
                 if cls_id == cls_names_inv["referee"]:
                     tracks["referees"][frame_num][track_id] = {"bbox": bbox}
+                if cls_id == cls_names_inv["goalkeeper"]:
+                    tracks["goalkeepers"][frame_num][track_id] = {"bbox": bbox}
 
             # Saving the bbox data in the tracks variable for ball
             for frame_detection in detection_supervision:
@@ -233,6 +237,7 @@ class Tracker:
             player_dict = tracks["players"][frame_num]
             ball_dict = tracks["ball"][frame_num]
             referees_dict = tracks["referees"][frame_num]
+            goalkeeper_dict = tracks["goalkeepers"][frame_num]
 
             # Draw Players
             for track_id, player in player_dict.items():
@@ -241,6 +246,12 @@ class Tracker:
 
                 if player.get("has_ball", False):
                     frame = self.draw_triangle(frame, player["bbox"], (0, 0, 255))
+
+            # Draw goalkeepers
+            for track_id, goalkeeper in goalkeeper_dict.items():
+                frame = self.draw_ellipse(
+                    frame, goalkeeper["bbox"], (0, 0, 255), track_id
+                )
 
             # Draw Referees
             for _, referee in referees_dict.items():

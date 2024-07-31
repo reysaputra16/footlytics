@@ -19,6 +19,7 @@ def main():
     # cv2.imwrite("frame0.jpg", video_frames[0])
 
     # Initialize Tracker
+    print("Initializing Tracker..")
     tracker = Tracker("models/bundesliga/best.pt")
 
     tracks = tracker.get_object_tracks(
@@ -29,9 +30,11 @@ def main():
     )
 
     # Get object positions
+    print("Getting object positions..")
     tracker.add_position_to_tracks(tracks)
 
     # Camera movement estimator
+    print("Handling camera movement estimator..")
     camera_movement_estimator = CameraMovementEstimator(video_frames[0])
     camera_movement_per_frame = camera_movement_estimator.get_camera_movement(
         video_frames,
@@ -43,17 +46,21 @@ def main():
     )
 
     # View Transformer
+    print("Handling view transformer..")
     view_transformer = ViewTransformer()
     view_transformer.add_transformed_position_to_tracks(tracks)
 
     # Interpolate ball positions
+    print("Handling ball interpolation..")
     tracks["ball"] = tracker.interpolate_ball_positions(tracks["ball"])
 
     # Speed and distance estimator
-    speed_distance_estimator = SpeedDistanceEstimator()
-    speed_distance_estimator.add_speed_and_distance_to_tracks(tracks)
+    # print("Handling speed and distance estimator..")
+    # speed_distance_estimator = SpeedDistanceEstimator()
+    # speed_distance_estimator.add_speed_and_distance_to_tracks(tracks)
 
     # Assign player teams
+    print("Handling players to assigned teams..")
     team_assigner = TeamAssigner()
     team_assigner.assign_team_color(video_frames[0], tracks["players"][0])
 
@@ -68,6 +75,7 @@ def main():
             )
 
     # Assign ball acquisition
+    print("Handling ball acquisition..")
     player_assigner = PlayerBallAssigner()
     team_ball_control = []
     for frame_num, player_track in enumerate(tracks["players"]):
@@ -85,21 +93,26 @@ def main():
     team_ball_control = np.array(team_ball_control)
 
     # Draw Output
+    print("---------------------------")
     ## Draw object tracks
+    print("Drawing object tracking..")
     output_video_frames = tracker.draw_annotations(
         video_frames, tracks, team_ball_control
     )
 
     ## Draw camera movement
+    print("Drawing camera movement statistics..")
     output_video_frames = camera_movement_estimator.draw_camera_movement(
         output_video_frames, camera_movement_per_frame
     )
 
     ## Draw speed and distance
-    speed_distance_estimator.draw_speed_and_distance(output_video_frames, tracks)
+    # print("Drawing speed and distances..")
+    # speed_distance_estimator.draw_speed_and_distance(output_video_frames, tracks)
 
     # Save Video
     save_video(output_video_frames, "output_videos/output_video_%d.avi" % video_number)
+    print("Video saved! Process is finished!")
 
 
 if __name__ == "__main__":
