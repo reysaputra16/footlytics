@@ -6,7 +6,7 @@ bundesliga_model_last = "models/bundesliga/last.pt"
 
 model = YOLO(bundesliga_model_best)
 
-results = model.predict("input_videos/test_video.mp4", save=True)
+results = model.predict("input_videos/ff-01-08-2024-1.mp4", save=True)
 print(results[0])
 print("============================")
 for box in results[0].boxes:

@@ -1,4 +1,4 @@
-from utils import read_video, save_video
+from utils import read_video, save_video, save_frames_as_img
 from trackers import Tracker
 import cv2
 import os
@@ -11,38 +11,34 @@ from speed_distance_estimator import SpeedDistanceEstimator
 
 
 def main():
-    video_number = 1
     with_image = True
-    set_tracker = True
-    set_obj_pos = True
+    set_tracker = False
+    set_obj_pos = False
     set_cam_estimator = False
     set_view_transform = False
-    set_ball_interpolation = True
+    set_ball_interpolation = False
     set_speed_dist_estimator = False
     set_team_assigner = False
     set_ball_acquisition = False
-    set_draw_tracks = True
+    set_draw_tracks = False
     set_draw_camera_movement = False
     set_draw_speed_dist = False
-    set_save_video = True
+    set_save_video = False
 
-    file_name = "ff-01-08-2024-1"
+    file_name = "ff-01-08-2024-2"
     dir = "input_videos/"
     file_ext = ".mp4"
     full_path = dir + file_name + file_ext
 
     # Read Video
-    video_frames = read_video(full_path)
+    video_frames = read_video(full_path, 5000)
+    output_video_frames = video_frames
 
     # Print some frames of the video (for possible training dataset)
     if with_image:
+        print("Saving some frames as images..")
         image_folder = "training/fun-futsal-dataset"
-        for i in range(0, len(video_frames), 100):
-            i = min(i, len(video_frames) - 1)
-            cv2.imwrite(
-                os.path.join(image_folder, file_name + ("__%d.jpg" % i)),
-                video_frames[i],
-            )
+        save_frames_as_img(image_folder, file_name, video_frames, 500)
 
     # Initialize Tracker
     if set_tracker:
@@ -151,7 +147,7 @@ def main():
 
     # Save Video
     if set_save_video:
-        save_video(output_video_frames, "output_videos/" + file_name + file_ext)
+        save_video(output_video_frames, "output_videos/" + file_name + ".avi")
         print("Video saved! Process is finished!")
 
 

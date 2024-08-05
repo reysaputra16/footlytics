@@ -1,15 +1,27 @@
 import cv2
 import os
+import sys
+
+sys.path.append("../")
 
 
-def read_video(video_path):
+def read_video(video_path, max_frames=-1):
     cap = cv2.VideoCapture(video_path)
     frames = []
-    while True:
-        ret, frame = cap.read()
-        if not ret:
-            break
-        frames.append(frame)
+    if max_frames < 0:
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                break
+            frames.append(frame)
+    else:
+        count = 0
+        while count < max_frames:
+            ret, frame = cap.read()
+            if not ret:
+                break
+            frames.append(frame)
+            count += 1
     return frames
 
 
