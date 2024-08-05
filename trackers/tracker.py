@@ -109,6 +109,10 @@ class Tracker:
                 cls_id = frame_detection[3]
                 track_id = frame_detection[4]
 
+                _, foot_pos_y = get_foot_position(bbox)
+                if foot_pos_y < 687:
+                    continue
+
                 if cls_id == cls_names_inv["player"]:
                     tracks["players"][frame_num][track_id] = {"bbox": bbox}
                 if cls_id == cls_names_inv["referee"]:
@@ -262,7 +266,7 @@ class Tracker:
                 frame = self.draw_triangle(frame, ball["bbox"], (0, 255, 0))
 
             # Draw Team ball control
-            frame = self.draw_team_ball_control(frame, frame_num, team_ball_control)
+            # frame = self.draw_team_ball_control(frame, frame_num, team_ball_control)
 
             output_video_frames.append(frame)
 
