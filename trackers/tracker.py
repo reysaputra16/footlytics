@@ -2,11 +2,13 @@ from ultralytics import YOLO
 import supervision as sv
 import pickle
 import os
+import torch
 import numpy as np
 import pandas as pd
 import cv2
 import sys
 from tqdm import tqdm
+
 
 sys.path.append("../")
 from utils import get_center_of_bbox, get_bbox_width, get_foot_position
@@ -16,6 +18,7 @@ class Tracker:
     def __init__(self, model_path):
         self.model = YOLO(model_path)
         self.tracker = sv.ByteTrack()
+        self.device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
     def add_position_to_tracks(self, tracks):
         for object, object_tracks in tracks.items():
@@ -49,7 +52,12 @@ class Tracker:
         print("Processing batch frames..")
         detections = []
         for i in tqdm(range(0, len(frames), batch_size)):
-            detections_batch = self.model.predict(frames[i : i + batch_size], conf=0.1)
+            detections_batch = self.model.predict(
+                frames[i : i + batch_size],
+                conf=0.4,
+                device=self.device,
+                max_det=20,
+            )
             detections += detections_batch
         return detections
 
