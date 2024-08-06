@@ -56,7 +56,7 @@ class Tracker:
                 frames[i : i + batch_size],
                 conf=0.4,
                 device=self.device,
-                max_det=20,
+                max_det=30,
             )
             detections += detections_batch
         return detections
