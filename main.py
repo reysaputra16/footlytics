@@ -14,15 +14,15 @@ def main():
     with_image = False
     set_tracker = True
     set_obj_pos = True
-    set_cam_estimator = True
-    set_view_transform = True
-    set_ball_interpolation = True
-    set_speed_dist_estimator = True
-    set_team_assigner = True
+    set_cam_estimator = False
+    set_view_transform = False
+    set_ball_interpolation = False
+    set_speed_dist_estimator = False
+    set_team_assigner = False
     set_ball_acquisition = False
     set_draw_tracks = True
-    set_draw_camera_movement = True
-    set_draw_speed_dist = True
+    set_draw_camera_movement = False
+    set_draw_speed_dist = False
     set_save_video = True
 
     file_name = "ff-01-08-2024-1"
@@ -37,7 +37,7 @@ def main():
     if with_image:
         print("Saving some frames as images..")
         image_folder = "training/fun-futsal-dataset"
-        save_frames_as_img(image_folder, file_name, video_frames, 500)
+        save_frames_as_img(image_folder, file_name, video_frames, 100)
 
     # Initialize Tracker
     if set_tracker:
