@@ -270,7 +270,7 @@ class Tracker:
                 frame = self.draw_triangle(frame, ball["bbox"], (0, 255, 0))
 
             # Draw Team ball control
-            frame = self.draw_team_ball_control(frame, frame_num, team_ball_control)
+            # frame = self.draw_team_ball_control(frame, frame_num, team_ball_control)
 
             output_video_frames.append(frame)
 

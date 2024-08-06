@@ -11,28 +11,27 @@ from speed_distance_estimator import SpeedDistanceEstimator
 
 
 def main():
-    with_image = True
-    set_tracker = False
-    set_obj_pos = False
-    set_cam_estimator = False
-    set_view_transform = False
-    set_ball_interpolation = False
-    set_speed_dist_estimator = False
-    set_team_assigner = False
+    with_image = False
+    set_tracker = True
+    set_obj_pos = True
+    set_cam_estimator = True
+    set_view_transform = True
+    set_ball_interpolation = True
+    set_speed_dist_estimator = True
+    set_team_assigner = True
     set_ball_acquisition = False
-    set_draw_tracks = False
-    set_draw_camera_movement = False
-    set_draw_speed_dist = False
-    set_save_video = False
+    set_draw_tracks = True
+    set_draw_camera_movement = True
+    set_draw_speed_dist = True
+    set_save_video = True
 
-    file_name = "ff-01-08-2024-2"
+    file_name = "ff-01-08-2024-1"
     dir = "input_videos/"
     file_ext = ".mp4"
     full_path = dir + file_name + file_ext
 
     # Read Video
     video_frames = read_video(full_path, 5000)
-    output_video_frames = video_frames
 
     # Print some frames of the video (for possible training dataset)
     if with_image:
@@ -43,7 +42,7 @@ def main():
     # Initialize Tracker
     if set_tracker:
         print("Initializing Tracker..")
-        tracker = Tracker("models/bundesliga/best.pt")
+        tracker = Tracker("models/bundesliga/bestm.pt")
 
         tracks = tracker.get_object_tracks(
             video_frames,
