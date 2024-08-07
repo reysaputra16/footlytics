@@ -240,7 +240,7 @@ class Tracker:
     def draw_annotations(self, video_frames, tracks, team_ball_control):
         output_video_frames = []
         for frame_num, frame in enumerate(video_frames):
-            frame = frame.copy()
+            # frame = frame.copy()
 
             player_dict = tracks["players"][frame_num]
             ball_dict = tracks["ball"][frame_num]
