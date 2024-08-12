@@ -1,1 +1,1 @@
-# football-analysis
+# footlytics
