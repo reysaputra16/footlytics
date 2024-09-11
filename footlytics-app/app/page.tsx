@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { addPlayer } from "./api/add-player/route.ts";
 
 export default function Login() {
   return (
