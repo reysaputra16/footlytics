@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { addPlayer } from "./api/add-player/route.ts";
 
-export default function Home() {
+export default function Login() {
   return (
     <main className="flex w-full h-screen bg-primary">
       <div className="flex flex-1 justify-center items-center">
