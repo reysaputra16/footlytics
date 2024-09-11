@@ -21,8 +21,8 @@ export async function GET(request: Request) {
     return NextResponse.json({ error }, { status: 500 });
   }
 
-  const pets = await sql`SELECT * FROM players;`;
-  return NextResponse.json({ pets }, { status: 200 });
+  const players = await sql`SELECT * FROM players;`;
+  return NextResponse.json({ players }, { status: 200 });
 }
 
 // http://footlytics-dashboard.vercel.app/api/delete-player?playerName=Test

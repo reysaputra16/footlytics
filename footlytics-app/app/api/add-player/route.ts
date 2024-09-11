@@ -21,8 +21,8 @@ export async function GET(request: Request) {
     return NextResponse.json({ error }, { status: 500 });
   }
 
-  const pets = await sql`SELECT * FROM players;`;
-  return NextResponse.json({ pets }, { status: 200 });
+  const players = await sql`SELECT * FROM players;`;
+  return NextResponse.json({ players }, { status: 200 });
 }
 
 // http://footlytics-dashboard.vercel.app/api/add-player?playerName=Test&matches=5&goals=5&pace=20&shooting=20&passing=20&dribbling=20&defense=20&physical=20
