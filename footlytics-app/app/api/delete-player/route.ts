@@ -15,8 +15,8 @@ export async function GET(request: Request) {
 
   try {
     if (!name || !matches || !goals || !pace || !shooting || !passing || !dribbling || !defense || !physical) throw new Error("Input is incomplete");
-    await sql`INSERT INTO players (name, matches, goals, pace, shooting, passing, dribbling, defense, physical) 
-    VALUES (${name}, ${matches}, ${goals}, ${pace}, ${shooting}, ${passing}, ${dribbling}, ${defense}, ${physical});`;
+    await sql`DELETE FROM players
+    WHERE name = ${name};`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
@@ -25,4 +25,4 @@ export async function GET(request: Request) {
   return NextResponse.json({ pets }, { status: 200 });
 }
 
-// http://footlytics-dashboard.vercel.app/api/add-player?playerName=Test&matches=5&goals=5&pace=20&shooting=20&passing=20&dribbling=20&defense=20&physical=20
+// http://footlytics-dashboard.vercel.app/api/delete-player?playerName=Test
