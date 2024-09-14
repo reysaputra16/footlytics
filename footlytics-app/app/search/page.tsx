@@ -1,4 +1,4 @@
-import { Sidebar, Main } from "../../components";
+import { Sidebar } from "../../components";
 
 export default function Search() {
   return (
