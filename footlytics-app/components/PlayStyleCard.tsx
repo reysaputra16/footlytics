@@ -68,9 +68,7 @@ const PlayStyleCard: React.FC<PlayStatCardProps> = ({
       className={`flex flex-1 flex-col w-full border-slate-500 border rounded-lg bg-cardColor`}
     >
       <div className={`flex gap-3 lg:px-[50px] px-[40px] pt-[30px] pb-[10px]`}>
-        <p className="font-medium lg:text-[22px] md:text-[17px] text-[13px] font-poppins">
-          Playing Style
-        </p>
+        <p className="lg:text-lg text-[13px] font-poppins">Playing Style</p>
       </div>
       <div className="relative flex flex-1 justify-center items-center">
         <div

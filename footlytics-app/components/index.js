@@ -7,6 +7,8 @@ import NextMatchCard from "./NextMatchCard";
 import WinRateCard from "./WinRateCard";
 import Home from "./Home";
 import RecentGamesGraph from "./RecentGamesGraph";
+import MatchCards from "./MatchCards";
+import PerformanceCard from "./PerformanceCard";
 
 export {
     Sidebar,
@@ -18,4 +20,6 @@ export {
     NextMatchCard,
     WinRateCard,
     RecentGamesGraph,
+    MatchCards,
+    PerformanceCard,
 };
