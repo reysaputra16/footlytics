@@ -12,6 +12,20 @@ const Home = () => {
   return (
     <div className="flex justify-center w-full h-full bg-primary font-poppins">
       <div className="grid grid-rows-7 grid-flow-col gap-4 items-center w-full max-w-screen-lg py-4">
+        <div className="grid grid-cols-[30%_70%] gap-4 h-full">
+          {/* Play Style Box */}
+          <PlayStyleCard
+            pace={80}
+            shooting={75}
+            passing={60}
+            dribbling={72}
+            defense={30}
+            physical={55}
+          />
+          <div className="flex justify-center items-center w-full h-[400px] border-slate-500 border rounded-lg bg-cardColor">
+            Another thing
+          </div>
+        </div>
         <div className="grid grid-cols-[75%_25%] gap-4 h-full">
           {/* Recent Games Box */}
           <RecentGamesGraph />
@@ -25,7 +39,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div>02</div>
         <div>03</div>
         <div>03</div>
         <div>03</div>

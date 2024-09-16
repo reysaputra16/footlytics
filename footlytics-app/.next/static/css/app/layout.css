@@ -561,14 +561,17 @@ video {
 .inset-0{
   inset: 0px;
 }
+.-left-4{
+  left: -1rem;
+}
 .-top-1{
   top: -0.25rem;
 }
+.left-0{
+  left: 0px;
+}
 .left-1\/2{
   left: 50%;
-}
-.left-8{
-  left: 2rem;
 }
 .left-9{
   left: 2.25rem;
@@ -723,6 +726,9 @@ video {
 .grid-flow-col{
   grid-auto-flow: column;
 }
+.grid-cols-\[30\%_70\%\]{
+  grid-template-columns: 30% 70%;
+}
 .grid-cols-\[75\%_25\%\]{
   grid-template-columns: 75% 25%;
 }
@@ -792,6 +798,10 @@ video {
 .border-t{
   border-top-width: 1px;
 }
+.border-\[\#525151\]{
+  --tw-border-opacity: 1;
+  border-color: rgb(82 81 81 / var(--tw-border-opacity));
+}
 .border-borderColor{
   --tw-border-opacity: 1;
   border-color: rgb(0 40 86 / var(--tw-border-opacity));
@@ -799,6 +809,10 @@ video {
 .border-slate-500{
   --tw-border-opacity: 1;
   border-color: rgb(100 116 139 / var(--tw-border-opacity));
+}
+.bg-\[\#525151\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(82 81 81 / var(--tw-bg-opacity));
 }
 .bg-borderColor{
   --tw-bg-opacity: 1;
@@ -979,6 +993,11 @@ body {
   cursor: pointer;
 }
 
+.hover\:border-slate-100:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(241 245 249 / var(--tw-border-opacity));
+}
+
 .hover\:bg-borderColor:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(0 40 86 / var(--tw-bg-opacity));
@@ -1000,10 +1019,6 @@ body {
 }
 
 @media (min-width: 1060px){
-
-  .md\:text-\[13px\]{
-    font-size: 13px;
-  }
 
   .md\:text-\[17px\]{
     font-size: 17px;
@@ -1094,10 +1109,6 @@ body {
 
 @media (min-width: 1700px){
 
-  .xl\:ml-\[75px\]{
-    margin-left: 75px;
-  }
-
   .xl\:h-16{
     height: 4rem;
   }
@@ -1106,36 +1117,12 @@ body {
     height: 1rem;
   }
 
-  .xl\:h-\[30px\]{
-    height: 30px;
-  }
-
-  .xl\:h-\[345px\]{
-    height: 345px;
-  }
-
-  .xl\:max-h-\[320px\]{
-    max-height: 320px;
-  }
-
   .xl\:w-16{
     width: 4rem;
   }
 
-  .xl\:w-\[30px\]{
-    width: 30px;
-  }
-
-  .xl\:w-\[345px\]{
-    width: 345px;
-  }
-
   .xl\:w-\[75px\]{
     width: 75px;
-  }
-
-  .xl\:max-w-\[320px\]{
-    max-width: 320px;
   }
 
   .xl\:px-\[80px\]{
@@ -1149,10 +1136,6 @@ body {
 
   .xl\:text-\[17px\]{
     font-size: 17px;
-  }
-
-  .xl\:text-\[18px\]{
-    font-size: 18px;
   }
 
   .xl\:text-\[20px\]{
@@ -1183,16 +1166,8 @@ body {
 
 @media (min-width: 2400px){
 
-  .xxl\:ml-\[100px\]{
-    margin-left: 100px;
-  }
-
   .xxl\:h-28{
     height: 7rem;
-  }
-
-  .xxl\:h-\[460px\]{
-    height: 460px;
   }
 
   .xxl\:w-28{
@@ -1201,10 +1176,6 @@ body {
 
   .xxl\:w-\[100px\]{
     width: 100px;
-  }
-
-  .xxl\:w-\[460px\]{
-    width: 460px;
   }
 
   .xxl\:text-2xl{
