@@ -6,13 +6,13 @@ import NextMatchCard from "./NextMatchCard";
 import WinRateCard from "./WinRateCard";
 import RecentGamesGraph from "./RecentGamesGraph";
 import MatchCards from "./MatchCards";
-import PerformanceCard from "./PerformanceCard";
+import LastMatchReport from "./LastMatchReport";
 
 // Test
 
 const Home = () => {
   return (
-    <div className="flex justify-center w-full h-full bg-primary font-poppins">
+    <div className="flex justify-center w-full h-full bg-primary font-poppins pl-[60px]">
       <div className="grid grid-rows-7 grid-flow-col gap-4 items-center w-full max-w-screen-lg py-4">
         <div className="grid grid-cols-[30%_70%] gap-4 h-full">
           {/* Play Style Box */}
@@ -24,7 +24,7 @@ const Home = () => {
             defense={30}
             physical={55}
           />
-          <PerformanceCard />
+          <LastMatchReport />
         </div>
         <div className="grid grid-cols-[75%_25%] gap-4 h-full">
           {/* Recent Games Box */}

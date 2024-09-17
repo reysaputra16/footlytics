@@ -8,7 +8,8 @@ import WinRateCard from "./WinRateCard";
 import Home from "./Home";
 import RecentGamesGraph from "./RecentGamesGraph";
 import MatchCards from "./MatchCards";
-import PerformanceCard from "./PerformanceCard";
+import LastMatchReport from "./LastMatchReport";
+import CircularStat from "./CircularStat";
 
 export {
     Sidebar,
@@ -21,5 +22,6 @@ export {
     WinRateCard,
     RecentGamesGraph,
     MatchCards,
-    PerformanceCard,
+    LastMatchReport,
+    CircularStat,
 };

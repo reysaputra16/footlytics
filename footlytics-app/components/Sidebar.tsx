@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const sidebar = ({ active }: { active: string }) => {
   return (
-    <div className="fixed flex flex-col xxl:w-[100px] xl:w-[75px] w-[60px] h-screen bg-secondary">
+    <div className="fixed flex flex-col w-[60px] h-screen bg-secondary">
       <div className="flex flex-1 flex-col items-center px-5 py-5">
         <Link href="/">
           <img
