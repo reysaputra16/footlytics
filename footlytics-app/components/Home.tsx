@@ -1,3 +1,6 @@
+"use client";
+
+// Component imports
 import { stats, playingStyle } from "../constants";
 import SmallStatCard from "./SmallStatCard";
 import PlayStyleCard from "./PlayStyleCard";
@@ -8,22 +11,27 @@ import RecentGamesGraph from "./RecentGamesGraph";
 import MatchCards from "./MatchCards";
 import LastMatchReport from "./LastMatchReport";
 
-// Test
+// Tool imports
+import { sql } from "@vercel/postgres";
 
-const Home = () => {
+const Home = async ({ userId }: { userId: string }) => {
+  const res = await sql`SELECT * FROM playerstats WHERE userid = ${userId};`;
+  const users = res.rows;
+
   return (
     <div className="flex justify-center w-full h-full bg-primary font-poppins pl-[60px]">
       <div className="grid grid-rows-7 grid-flow-col gap-4 items-center w-full max-w-screen-lg py-4">
         <div className="grid grid-cols-[30%_70%] gap-4 h-full">
-          {/* Play Style Box */}
-          <PlayStyleCard
-            pace={80}
-            shooting={75}
-            passing={60}
-            dribbling={72}
-            defense={30}
-            physical={55}
-          />
+          {users.map((user, index) => (
+            <PlayStyleCard
+              pace={user.pace}
+              shooting={user.shooting}
+              passing={user.passing}
+              dribbling={user.dribbling}
+              defense={user.defense}
+              physical={user.physical}
+            />
+          ))}
           <LastMatchReport />
         </div>
         <div className="grid grid-cols-[75%_25%] gap-4 h-full">

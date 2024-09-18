@@ -4,7 +4,7 @@ export default function Overview() {
   return (
     <main className="flex flex-row w-full">
       <Sidebar active="home" />
-      <Home />
+      <Home userId="5" />
     </main>
   );
 }

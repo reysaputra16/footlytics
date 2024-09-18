@@ -18,7 +18,8 @@ export async function GET(request: Request) {
 
   // const players = await sql`SELECT * FROM players;`;
   // return NextResponse.json({ players }, { status: 200 });
-  return NextResponse.redirect("http://localhost:3000/overview");
+  return NextResponse.redirect("http://localhost:3000/home");
 }
 
-// http://localhost:3000/api/add-user?firstName=Reynard&lastName=Saputra&userId=1&email=test@footlytics.net
+// Sample API call:
+// http://localhost:3000/api/add-user?firstName=Phil&lastName=Foden&userId=6&email=phil@foden.com

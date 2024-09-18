@@ -3,7 +3,7 @@ const RecentGamesGraph = () => {
   return (
     <div className="flex flex-col w-full h-full border-slate-500 border rounded-lg p-4 bg-cardColor">
       <div className="flex p-4 justify-between">
-        <h1 className="flex justify-center items-center text-lg">
+        <h1 className="flex justify-center items-center text-[21px]">
           Recent Games
         </h1>
         <div className="flex flex-row gap-3">

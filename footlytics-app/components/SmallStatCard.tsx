@@ -15,7 +15,7 @@ const SmallStatCard: React.FC<SmallStatCardProps> = ({
     <div
       className={`flex flex-1 flex-col h-fit w-full justify-center items-center gap-10`}
     >
-      <p className="lg:text-lg text-[13px] font-poppins">{title}</p>
+      <p className="text-[21px] font-poppins">{title}</p>
       <div className={`grid grid-cols-2 gap-3`}>
         <p className="flex justify-center items-center lg:text-[40px] text-[30px] font-normal font-poppins">
           {value}

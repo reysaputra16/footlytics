@@ -4,7 +4,7 @@ const LastMatchReport = () => {
   return (
     <div className="flex flex-col w-full h-full border-slate-500 border p-4 rounded-lg bg-cardColor">
       <div className="flex p-4 justify-between">
-        <h1 className="flex justify-center items-center text-lg">
+        <h1 className="flex justify-center items-center text-[21px]">
           Match Report
         </h1>
       </div>
