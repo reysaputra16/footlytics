@@ -1,5 +1,3 @@
-"use client";
-
 // Component imports
 import { stats, playingStyle } from "../constants";
 import SmallStatCard from "./SmallStatCard";
