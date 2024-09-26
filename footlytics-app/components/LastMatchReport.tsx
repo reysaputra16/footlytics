@@ -1,6 +1,14 @@
 import CircularStat from "./CircularStat";
 
-const LastMatchReport = () => {
+const LastMatchReport = ({
+  wins,
+  draws,
+  losses,
+}: {
+  wins: number;
+  draws: number;
+  losses: number;
+}) => {
   return (
     <div className="flex flex-col w-full h-full border-slate-500 border p-4 rounded-lg bg-cardColor">
       <div className="flex p-4 justify-between">

@@ -4,7 +4,7 @@ export default function Overview() {
   return (
     <main className="flex flex-row w-full">
       <Sidebar active="home" />
-      <Home userId="5" />
+      <Home userId="20001" /> {/* This is taking Reynard's Stats */}
     </main>
   );
 }

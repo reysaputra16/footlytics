@@ -21,16 +21,24 @@ const Home = async ({ userId }: { userId: string }) => {
       <div className="grid grid-rows-7 grid-flow-col gap-4 items-center w-full max-w-screen-lg py-4">
         <div className="grid grid-cols-[30%_70%] gap-4 h-full">
           {users.map((user, index) => (
-            <PlayStyleCard
-              pace={user.pace}
-              shooting={user.shooting}
-              passing={user.passing}
-              dribbling={user.dribbling}
-              defense={user.defense}
-              physical={user.physical}
-            />
+            <>
+              <PlayStyleCard
+                key={user.userid}
+                pace={user.pace}
+                shooting={user.shooting}
+                passing={user.passing}
+                dribbling={user.dribbling}
+                defense={user.defense}
+                physical={user.physical}
+              />
+              <LastMatchReport
+                key={user.userid}
+                wins={user.wins}
+                draws={user.draws}
+                losses={user.loss}
+              />
+            </>
           ))}
-          <LastMatchReport />
         </div>
         <div className="grid grid-cols-[75%_25%] gap-4 h-full">
           {/* Recent Games Box */}
