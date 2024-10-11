@@ -14,9 +14,12 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        primary: "#000C1A",
-        secondary: "#001528",
+        bgPrimary: "#041533",
+        bgSecondary: "#1D2D49",
+        textPrimary: "#FFFFFF",
+        textSecondary: "#8A8A8A",
         borderColor: "#002856",
+        cardColor: "#001D3D",
         white: "#FFFFFF",
       },
       fontFamily: {
