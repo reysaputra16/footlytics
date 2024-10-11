@@ -1,7 +1,9 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js",
-  "/dashboard/player-search/page": "app/dashboard/player-search/page.js",
-  "/dashboard/players/[id]/page": "app/dashboard/players/[id]/page.js",
   "/dashboard/analysis/page": "app/dashboard/analysis/page.js",
-  "/dashboard/page": "app/dashboard/page.js"
+  "/dashboard/players/[id]/page": "app/dashboard/players/[id]/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/dashboard/player-search/page": "app/dashboard/player-search/page.js"
 }

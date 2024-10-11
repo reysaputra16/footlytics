@@ -1,5 +1,13 @@
 import { ChevronDown } from "lucide-react";
 
+type Player = {
+  name: string;
+  team: string;
+  goals: number;
+  assists: number;
+  gamesPlayed: number;
+};
+
 const TableStats = ({ data, page }: { data: any; page: string }) => {
   return (
     <div
@@ -26,7 +34,7 @@ const TableStats = ({ data, page }: { data: any; page: string }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((player, index) => (
+          {data.map((player: Player, index: number) => (
             <tr key={player.name} className="text-[14px]">
               <td className="p-[10px]">{index + 1}</td>
               <td className="p-[10px]">
