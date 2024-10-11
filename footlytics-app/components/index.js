@@ -10,6 +10,9 @@ import RecentGamesGraph from "./RecentGamesGraph";
 import MatchCards from "./MatchCards";
 import LastMatchReport from "./LastMatchReport";
 import CircularStat from "./CircularStat";
+import SmallStatCardNoUnit from "./SmallStatCardNoUnit";
+import Search from "./Search";
+import SearchList from "./SearchList";
 
 export {
     Sidebar,
@@ -24,4 +27,7 @@ export {
     MatchCards,
     LastMatchReport,
     CircularStat,
+    SmallStatCardNoUnit,
+    Search,
+    SearchList,
 };

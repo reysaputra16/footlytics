@@ -4,7 +4,7 @@ export default function Login() {
   return (
     <main className="flex w-full h-screen bg-primary">
       <div className="flex flex-1 justify-center items-center">
-        <Link href="/home">
+        <Link href="/dashboard">
           <button
             className="border-borderColor border-2 rounded-lg p-4 hover:cursor-pointer 
           hover:bg-borderColor hover:transition-all hover:duration-300"

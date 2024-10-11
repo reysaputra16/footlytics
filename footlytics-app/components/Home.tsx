@@ -8,6 +8,7 @@ import WinRateCard from "./WinRateCard";
 import RecentGamesGraph from "./RecentGamesGraph";
 import MatchCards from "./MatchCards";
 import LastMatchReport from "./LastMatchReport";
+import SmallStatCardNoUnit from "./SmallStatCardNoUnit";
 
 // Tool imports
 import { sql } from "@vercel/postgres";
@@ -19,7 +20,7 @@ const Home = async ({ userId }: { userId: string }) => {
   return (
     <div className="flex justify-center w-full h-full bg-primary font-poppins pl-[60px]">
       <div className="grid grid-rows-7 grid-flow-col gap-4 items-center w-full max-w-screen-lg py-4">
-        <div className="grid grid-cols-[30%_70%] gap-4 h-full">
+        <div className="grid grid-flow-col gap-4 h-full">
           {users.map((user, index) => (
             <>
               <PlayStyleCard
@@ -40,7 +41,7 @@ const Home = async ({ userId }: { userId: string }) => {
             </>
           ))}
         </div>
-        <div className="grid grid-cols-[75%_25%] gap-4 h-full">
+        <div className="grid grid-flow-col-dense gap-4 h-full">
           {/* Recent Games Box */}
           <RecentGamesGraph />
           {/* 2 Stat Cards beside Recent Games */}
@@ -49,7 +50,16 @@ const Home = async ({ userId }: { userId: string }) => {
             <SmallStatCard title="Average Speed" value="12.5" unit="km/h" />
           </div>
         </div>
-        <div>03</div>
+        <div className="grid grid-cols-4 gap-4 h-full">
+          {/* Appearance Stats */}
+          <SmallStatCardNoUnit title="Appearances" value="12" />
+          {/* Goals Stats */}
+          <SmallStatCardNoUnit title="Goals" value="5" />
+          {/* Wins */}
+          <SmallStatCardNoUnit title="Wins" value="8" />
+          {/* Losses */}
+          <SmallStatCardNoUnit title="Losses" value="4" />
+        </div>
         <div>03</div>
         <div>03</div>
         <div>03</div>

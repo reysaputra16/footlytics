@@ -1,12 +1,21 @@
-import { Sidebar } from "../../components";
+"use client";
+import { useState } from "react";
+import { Sidebar, Search, SearchList } from "../../components";
 
-export default function Search() {
+export default function SearchPage() {
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSearch = (value: string) => {
+    //Access the search value when Enter is pressed
+    console.log(value);
+    setSearchValue(value);
+  };
+
   return (
     <main className="flex flex-row">
       <Sidebar active="search" />
-      <div className="flex flex-1 justify-center items-center w-full h-screen">
-        <h1>Search Page</h1>
-      </div>
+      <Search onSearch={handleSearch} />
+      <SearchList searchValue={searchValue} />
     </main>
   );
 }

@@ -79,20 +79,20 @@ const RecentGamesGraph = () => {
           </svg>
           {/* Graph: X axis */}
           <svg
-            viewBox="0 0 900 50"
+            viewBox="0 0 700 50"
             className="absolute left-0 top-[197px] h-[50px]"
           >
             <polyline
               fill="none"
               stroke="#FFFFFF"
               strokeWidth="4"
-              points="32,0 795,0"
+              points="32,0 645,0"
             />
             {/* Graph: X axis labels */}
             {last5Games.map((game, index) => (
               <text
                 key={index}
-                x={55 + 190 * index}
+                x={55 + 153 * index}
                 y={20}
                 fontSize={15}
                 fill="#FFFFFF"
@@ -105,7 +105,7 @@ const RecentGamesGraph = () => {
 
           {/* Line Graph */}
           <svg
-            viewBox="0 0 760 200"
+            viewBox="0 0 700 200"
             className="absolute left-9 -top-1 h-[200px]"
           >
             {/* Lines for guidance in graph */}
@@ -113,43 +113,43 @@ const RecentGamesGraph = () => {
               fill="none"
               stroke="#525151"
               strokeWidth="2"
-              points="0,166.66 760,166.66"
+              points="0,166.66 608,166.66"
             />
             <polyline
               fill="none"
               stroke="#525151"
               strokeWidth="2"
-              points="0,133.33 760,133.33"
+              points="0,133.33 608,133.33"
             />
             <polyline
               fill="none"
               stroke="#525151"
               strokeWidth="2"
-              points="0,100 760,100"
+              points="0,100 608,100"
             />
             <polyline
               fill="none"
               stroke="#525151"
               strokeWidth="2"
-              points="0,66.66 760,66.66"
+              points="0,66.66 608,66.66"
             />
             <polyline
               fill="none"
               stroke="#525151"
               strokeWidth="2"
-              points="0,33.33 760,33.33"
+              points="0,33.33 608,33.33"
             />
             {/* Area under the curve */}
             <polygon
               fill="rgba(66, 153, 225, 0.4)"
-              points="0,200 190,133.3 380,133.3 570,166.6 760,100 760,200"
+              points="0,200 152,133.3 304,133.3 456,166.6 608,100 608,200"
             />
             {/* Line path */}
             <polyline
               fill="none"
               stroke="#4299E1"
               strokeWidth="3"
-              points="0,200 190,133.3 380,133.3 570,166.6 760,100"
+              points="0,200 152,133.3 304,133.3 456,166.6 608,100"
             />
           </svg>
         </div>
