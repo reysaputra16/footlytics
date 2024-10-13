@@ -1,12 +1,14 @@
+"use client";
 import {
   ChartLine,
   LayoutDashboard,
   LogOut,
   Menu,
+  Settings,
   UserRoundSearch,
 } from "lucide-react";
-import Image from "next/image";
-import MenuItem from "./MenuItem";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const menuItems = [
   {
@@ -27,24 +29,34 @@ const menuItems = [
 ];
 
 const Sidebar = () => {
+  const pathname = usePathname();
+
   return (
-    <div className="top-[40px]">
-      <div className="fixed flex flex-col justify-center gap-[20px] mb-[20px]">
-        <Image
-          className="rounded-full object-cover"
-          src="/profile.svg"
-          alt="Profile Icon"
-          width={50}
-          height={50}
-        />
-        {menuItems.map((page) => (
-          <MenuItem item={page} key={page.title} />
+    <>
+      <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
+        {menuItems.map((item, index) => (
+          <Link
+            href={item.path}
+            key={index}
+            className={`flex w-9 h-9 items-center justify-center rounded-lg text-textSecondary transition-colors hover:text-textPrimary md:h-8 md:w-8 ${
+              pathname === item.path ? "bg-bgSecondary" : ""
+            }`}
+          >
+            {item.icon}
+          </Link>
         ))}
-        <button className="flex items-center p-[20px] my-[5px] mx-0 gap-[10px] cursor-pointer rounded-[10px] bg-none border-none w-full text-textSecondary transition-colors hover:text-textPrimary ">
-          <LogOut />
-        </button>
-      </div>
-    </div>
+      </nav>
+      <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
+        <Link
+          href="/dashboard/settings"
+          className={`flex w-9 h-9 items-center justify-center rounded-lg text-textSecondary transition-colors hover:text-textPrimary md:h-8 md:w-8 ${
+            pathname === "/dashboard/settings" ? "bg-bgSecondary" : ""
+          }`}
+        >
+          <Settings />
+        </Link>
+      </nav>
+    </>
   );
 };
 
