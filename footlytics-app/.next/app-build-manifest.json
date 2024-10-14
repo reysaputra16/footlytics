@@ -21,21 +21,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/dashboard/layout.js"
     ],
-    "/dashboard/player-search/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/dashboard/player-search/page.js"
-    ],
-    "/dashboard/player-search/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/dashboard/player-search/layout.js"
-    ],
-    "/dashboard/players/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/dashboard/players/[id]/page.js"
-    ],
     "/dashboard/analysis/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -46,15 +31,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/dashboard/analysis/layout.js"
     ],
-    "/dashboard/matches/[id]/page": [
+    "/dashboard/player-search/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/dashboard/matches/[id]/page.js"
+      "static/chunks/app/dashboard/player-search/page.js"
     ],
-    "/_not-found/page": [
+    "/dashboard/player-search/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/dashboard/player-search/layout.js"
     ]
   }
 }
