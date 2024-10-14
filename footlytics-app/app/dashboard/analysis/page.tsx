@@ -89,7 +89,7 @@ const Analysis = () => {
                     </span>
                     <span className="px-[20px]">vs</span>
                     <span className="flex gap-[10px]">
-                      <ShieldQuestion width={25} height={25} /> {match.away}
+                      {match.away} <ShieldQuestion width={25} height={25} />
                     </span>
                   </div>
                 </td>
